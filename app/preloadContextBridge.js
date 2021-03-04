@@ -12,7 +12,7 @@ contextBridge.exposeInMainWorld(
         // whitelist channels
         const validChannels = ['toMain', 'form-submission'];
         if (validChannels.includes(channel)) {
-          ipcRenderer.send(channel, data);
+          return ipcRenderer.send(channel, data);
         }
       },
       receive: (channel, func) => {

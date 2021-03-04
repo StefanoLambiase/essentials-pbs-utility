@@ -6,18 +6,16 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-let mainWindow : BrowserWindow;
-
 const createWindow = () => {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
+  const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       nodeIntegration: false, // is default value after Electron v5
       contextIsolation: true, // protect against prototype pollution
       enableRemoteModule: false, // turn off remote
-      preload: path.join(__dirname, 'preload.js'), // use a preload script
+      preload: path.join(__dirname, 'preloadContextBridge.js'), // use a preload script
     },
   });
 
@@ -55,11 +53,5 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 ipcMain.on('form-submission', function(event, firstname) {
   console.log('this is the firstname from the form ->', firstname);
-  mainWindow.webContents.send('from-form-submission', 'miaow2');
-});
-
-
-ipcMain.on('toMain', (event, args) => {
-  // Send result back to renderer process
-  mainWindow.webContents.send('fromMain', 'miaow');
+  event.reply('from-form-submission', true);
 });
