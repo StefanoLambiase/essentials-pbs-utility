@@ -3,8 +3,14 @@ const {
   ipcRenderer,
 } = require('electron');
 
-// Expose protected methods that allow the renderer process to use
-// the ipcRenderer without exposing the entire object
+
+/**
+ * This script is used to expose protected methods that allow the
+ * renderer process to use the ipcRenderer without exposing the
+ * entire object. This 'bridge' is used for security reasons and to
+ * avoid the use of node.js powerful functionality inside the
+ * renderer process.
+ */
 contextBridge.exposeInMainWorld(
     'api',
     {

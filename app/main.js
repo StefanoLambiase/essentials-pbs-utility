@@ -20,7 +20,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  mainWindow.loadFile(path.join(__dirname, 'renderProcess/html/index.html'));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -53,5 +53,5 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 ipcMain.on('form-submission', function(event, firstname) {
   console.log('this is the firstname from the form ->', firstname);
-  event.reply('from-form-submission', true);
+  event.reply('from-form-submission', firstname);
 });

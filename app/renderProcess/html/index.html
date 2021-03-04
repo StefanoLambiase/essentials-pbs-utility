@@ -11,10 +11,10 @@
     <title>Essentials PBS Utility</title>
   </head>
   <body>
-    <div class="container xxl">
+    <div class="container">
       <div class="row">
         <form class="col" id="createTrainerTypeForm">
-          <div class="row">
+          <div class="row row-cols-2">
             <div class="col mb-3">
               <label for="trainerTypeId" class="form-label">Trainer ID</label>
               <input type="text" class="form-control" id="trainerTypeId">
@@ -23,8 +23,6 @@
               <label for="trainerTypeInternalName" class="form-label">Trainer Internal Name</label>
               <input type="text" class="form-control" id="trainerTypeInternalName">
             </div>
-          </div>
-          <div class="row">
             <div class="col mb-3">
               <label for="trainerTypeDisplayName" class="form-label">Trainer Display Name</label>
               <input type="text" class="form-control" id="trainerTypeDisplayName">
@@ -40,14 +38,7 @@
       </div>
     </div>
 
-    <script>
-      window.api.receive("fromMain", (data) => {
-          console.log(`Received ${data} from main process`);
-      });
-      window.api.send("toMain", "some data");
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <script src="./js/createTrainerType.js"></script>
+    <script src="../js/createTrainerType.js"></script>
   </body>
 </html>
