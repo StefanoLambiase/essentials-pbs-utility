@@ -1,7 +1,7 @@
 const createTrainerTypeForm = document.querySelector('#createTrainerTypeForm');
 
 function sendForm(event) {
-    console.log('Sono nel form 1')
+    console.log('CREATE TRAINER TYPE: submitting form.')
     event.preventDefault(); // stop the form from submitting
 
     const trainerType = {
@@ -9,13 +9,11 @@ function sendForm(event) {
         internalNameInput: $("#trainerTypeInternalName").val()
     }
 
-    console.log('Sono nel form 2')
-    window.api.send("form-submission", trainerType);
-    console.log('Sono nel form 3')
+    window.bridgeToMain.send("form-submission", trainerType);
 }
 
 
-window.api.receive("from-form-submission", (data) => {
+window.bridgeToMain.onReceive("from-form-submission", (data) => {
     console.log(`Received ${data} from main process`);
 });
 

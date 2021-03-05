@@ -12,17 +12,17 @@ const {
  * renderer process.
  */
 contextBridge.exposeInMainWorld(
-    'api',
+    'bridgeToMain',
     {
       send: (channel, data) => {
         // whitelist channels
-        const validChannels = ['toMain', 'form-submission'];
+        const validChannels = ['form-submission'];
         if (validChannels.includes(channel)) {
           return ipcRenderer.send(channel, data);
         }
       },
-      receive: (channel, func) => {
-        const validChannels = ['fromMain', 'from-form-submission'];
+      onReceive: (channel, func) => {
+        const validChannels = ['from-form-submission', 'generate-text'];
         if (validChannels.includes(channel)) {
           // Deliberately strip event as it includes `sender`.
           ipcRenderer.on(channel, (event, ...args) => func(...args));

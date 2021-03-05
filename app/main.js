@@ -31,7 +31,7 @@ const createWindow = (windowPath) => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => createWindow('renderProcess/html/index.html'));
+app.on('ready', () => createWindow('rendererProcess/html/index.html'));
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
@@ -56,9 +56,15 @@ app.on('activate', () => {
 
 
 ipcMain.on('form-submission', function(event, trainerType) {
-  console.log('this is the firstname from the form ->', trainerType.idInput);
+  console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
 
-  const window = createWindow('renderProcess/html/index.html');
+  // Creates the window used to show the generated text for trainerType.
+  const generatedTextWindow = createWindow('rendererProcess/html/generated-text.html');
+  // Once the window is been generated, sends the trainerType object to it.
+  generatedTextWindow.once('ready-to-show', () => {
+    generatedTextWindow.show();
+    generatedTextWindow.webContents.send('generate-text', trainerType);
+  });
 
   event.reply('from-form-submission', trainerType.internalNameInput);
 });
