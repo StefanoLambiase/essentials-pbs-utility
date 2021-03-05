@@ -16,30 +16,66 @@
 
     <div class="container m-sm-5">
 
-      <!-- Form to create a trainer type -->
-      <div class="row">
-        <form class="col" id="createTrainerTypeForm">
-          <div class="row row-cols-2">
-            <div class="col mb-3">
-              <label for="trainerTypeId" class="form-label">Trainer ID</label>
-              <input type="text" class="form-control" id="trainerTypeId">
-            </div>
-            <div class="col mb-3">
-              <label for="trainerTypeInternalName" class="form-label">Trainer Internal Name</label>
-              <input type="text" class="form-control" id="trainerTypeInternalName">
-            </div>
-            <div class="col mb-3">
-              <label for="trainerTypeDisplayName" class="form-label">Trainer Display Name</label>
-              <input type="text" class="form-control" id="trainerTypeDisplayName">
-            </div>
-            <div class="col mb-3">
-              <label for="trainerTypeBaseMoney" class="form-label">Trainer Base Money</label>
-              <input type="number" class="form-control" id="trainerTypeBaseMoney">
-            </div>
+      <!-- Div used for the app introduction -->
+      <div id="introduction" class="row m-sm-5">
+        <h1>Pokémon Essentials</h1>
+        <h3 style="color: #990000;">PBS Utility</h3>
+        <span>
+          This is a desktop app built to help <strong>Pokémon Essentials</strong> users in the creation of text for the PBS txt files.
+        </span>
+      </div>
+
+      <!-- Div used for the various forms -->
+      <div id="interaction" class="row m-sm-5">
+        <!-- Interaction selection -->
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Trainer Type</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Trainer</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">...</button>
+          </li>
+        </ul>
+        <!-- Div based on selected interaction -->
+        <div class="tab-content" id="pills-tabContent">
+
+          <!-- Trainer Type Form -->
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <form id="createTrainerTypeForm">
+              <div class="row row-cols-2">
+                <div class="col mb-3">
+                  <label for="trainerTypeId" class="form-label">Trainer ID</label>
+                  <input type="text" class="form-control" id="trainerTypeId">
+                </div>
+                <div class="col mb-3">
+                  <label for="trainerTypeInternalName" class="form-label">Trainer Internal Name</label>
+                  <input type="text" class="form-control" id="trainerTypeInternalName">
+                </div>
+                <div class="col mb-3">
+                  <label for="trainerTypeDisplayName" class="form-label">Trainer Display Name</label>
+                  <input type="text" class="form-control" id="trainerTypeDisplayName">
+                </div>
+                <div class="col mb-3">
+                  <label for="trainerTypeBaseMoney" class="form-label">Trainer Base Money</label>
+                  <input type="number" class="form-control" id="trainerTypeBaseMoney">
+                </div>
+              </div>
+    
+              <button type="submit" class="btn btn-primary" id="createTrainerTypeButton">Submit</button>
+            </form>
           </div>
 
-          <button type="submit" class="btn btn-primary" id="createTrainerTypeButton">Submit</button>
-        </form>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            Ops, not yet implemented 😭
+          </div>
+          
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            Ops, not yet implementd 😭
+          </div>
+        </div>
       </div>
 
     </div>
