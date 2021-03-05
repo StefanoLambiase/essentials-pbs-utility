@@ -5,16 +5,11 @@ function sendForm(event) {
     event.preventDefault(); // stop the form from submitting
 
     const trainerType = {
-        idInput: $("#trainerTypeId").val(),
-        internalNameInput: $("#trainerTypeInternalName").val()
+        idInput: $('#trainerTypeId').val(),
+        internalNameInput: $('#trainerTypeInternalName').val()
     }
 
-    window.bridgeToMain.send("form-submission", trainerType);
+    window.bridgeToMain.send('trainer-type-submission', trainerType);
 }
-
-
-window.bridgeToMain.onReceive("from-form-submission", (data) => {
-    console.log(`Received ${data} from main process`);
-});
 
 createTrainerTypeForm.addEventListener('submit', sendForm)

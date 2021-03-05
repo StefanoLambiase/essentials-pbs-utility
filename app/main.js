@@ -1,3 +1,7 @@
+// * This script contains the main process of the app.
+// * This is the first script executed in the app.
+
+// Imports form Electron and others node libraries.
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 
@@ -6,9 +10,14 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+/**
+ * @description Creates a window that contains the windowPath HTML page.
+ * @param {string} windowPath - The path of the HTML page to render.
+ * @return {BrowserWindow} Reference to the window created.
+ */
 const createWindow = (windowPath) => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  const window = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -20,13 +29,18 @@ const createWindow = (windowPath) => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, windowPath));
+  window.loadFile(path.join(__dirname, windowPath));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  window.webContents.openDevTools();
 
-  return mainWindow;
+  return window;
 };
+
+
+// * ########################################################
+// * ################### App callbacks ######################
+// * ########################################################
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -55,16 +69,18 @@ app.on('activate', () => {
 // code. You can also put them in separate files and import them here.
 
 
-ipcMain.on('form-submission', function(event, trainerType) {
+// * ########################################################
+// * ############### Main process functions #################
+// * ########################################################
+
+ipcMain.on('trainer-type-submission', function(event, trainerType) {
   console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
 
   // Creates the window used to show the generated text for trainerType.
   const generatedTextWindow = createWindow('rendererProcess/html/generated-text.html');
-  // Once the window is been generated, sends the trainerType object to it.
+  // Once the window has been generated, sends the trainerType object to it.
   generatedTextWindow.once('ready-to-show', () => {
     generatedTextWindow.show();
     generatedTextWindow.webContents.send('generate-text', trainerType);
   });
-
-  event.reply('from-form-submission', trainerType.internalNameInput);
 });
