@@ -12,10 +12,8 @@ if (require('electron-squirrel-startup')) {
 
 /**
  * @description Creates a window that contains the windowPath HTML page.
- * @param {string} windowPath - The path of the HTML page to render.
- * @return {BrowserWindow} Reference to the window created.
  */
-const createWindow = (windowPath) => {
+const createWindow = () => {
   // Create the browser window.
   const window = new BrowserWindow({
     width: 800,
@@ -29,12 +27,10 @@ const createWindow = (windowPath) => {
   });
 
   // and load the index.html of the app.
-  window.loadFile(path.join(__dirname, windowPath));
+  window.loadFile(path.join(__dirname, 'rendererProcess/html/index.html'));
 
   // Open the DevTools.
   window.webContents.openDevTools();
-
-  return window;
 };
 
 
@@ -45,7 +41,7 @@ const createWindow = (windowPath) => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', () => createWindow('rendererProcess/html/index.html'));
+app.on('ready', () => createWindow);
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
@@ -73,11 +69,33 @@ app.on('activate', () => {
 // * ############### Main process functions #################
 // * ########################################################
 
+const createTextWindow = (windowPath) => {
+  const window = new BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: false, // is default value after Electron v5
+      contextIsolation: true, // protect against prototype pollution
+      enableRemoteModule: false, // turn off remote
+    },
+  });
+
+  // and load the index.html of the app.
+  window.loadFile(path.join(__dirname, windowPath));
+
+  // Open the DevTools.
+  window.webContents.openDevTools();
+
+  return window;
+};
+
+
 ipcMain.on('trainer-type-submission', function(event, trainerType) {
   console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
 
   // Creates the window used to show the generated text for trainerType.
-  const generatedTextWindow = createWindow('rendererProcess/html/generated-text.html');
+  const generatedTextWindow = createTextWindow('rendererProcess/html/generated-text.html');
+
   // Once the window has been generated, sends the trainerType object to it.
   generatedTextWindow.once('ready-to-show', () => {
     generatedTextWindow.show();

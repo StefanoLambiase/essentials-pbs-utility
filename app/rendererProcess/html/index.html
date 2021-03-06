@@ -30,10 +30,10 @@
         <!-- Interaction selection -->
         <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Trainer Type</button>
+            <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Trainer Type</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Trainer</button>
+            <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Trainer</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">...</button>
@@ -44,7 +44,7 @@
         <div class="tab-content" id="pills-tabContent">
 
           <!-- Trainer Type Form -->
-          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+          <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
             <form id="createTrainerTypeForm">
               <div class="row row-cols-2">
                 <div class="col mb-3">
@@ -70,8 +70,43 @@
           </div>
 
           <!-- Trainer form -->
-          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            Ops, not yet implemented 😭
+          <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <form id="defineIndividualTrainer">
+              <!-- First line -->
+
+              <div class="row row-cols-3">
+                <div class="col mb-3">
+                  <label for="individualTrainerId" class="form-label">Trainer ID</label>
+                  <input type="text" class="form-control" id="individualTrainerId">
+                </div>
+                <div class="col mb-3">
+                  <label for="individualTrainerName" class="form-label">Trainer Internal Name</label>
+                  <input type="text" class="form-control" id="individualTrainerName">
+                </div>
+                <div class="col mb-3">
+                  <label for="individualTrainerVersionNumber" class="form-label">Version number</label>
+                  <input type="number" class="form-control" id="individualTrainerVersionNumber">
+                </div>
+              </div>
+
+              <div class="row row-cols-2">
+                <div class="col mb-3">
+                  <label for="individualTrainerItems" class="form-label">Items</label>
+                </div>
+
+                <div class="col mb-3 btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+                  <button id="individualTrainerAddItem" type="button" class="btn btn-success">+</button>
+                  <button id="individualTrainerSubtractItem" type="button" class="btn btn-danger">-</button>
+                </div>
+              </div>
+
+              <div class="row row-cols-4" id="individualTrainerItemsList">
+                <div class="col mb-3">
+                  <input type="text" class="form-control">
+                </div>
+              </div>
+
+            </form>
           </div>
           
           <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
@@ -88,6 +123,7 @@
     
     <!-- Custom Scripts -->
     <script src="../js/create-trainer-type.js"></script>
+    <script src="../js/define-individual-trainer.js"></script>
 
   </body>
 </html>
