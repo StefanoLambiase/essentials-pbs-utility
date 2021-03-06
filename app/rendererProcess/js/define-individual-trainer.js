@@ -1,5 +1,9 @@
+// #############################################################
+// ########################## Items ############################
+// #############################################################
+
 var addItemInputBtn = document.getElementById('individualTrainerAddItem');
-var subtractItemInputBtn = document.getElementById('individualTrainerSubtractItem');
+var removeItemInputBtn = document.getElementById('individualTrainerRemoveItem');
 
 addItemInputBtn.addEventListener('click', () => {
 	// append input control at end of form
@@ -7,6 +11,13 @@ addItemInputBtn.addEventListener('click', () => {
      .appendTo('#individualTrainerItemsList');
 });
 
-subtractItemInputBtn.addEventListener('click', () => {
+removeItemInputBtn.addEventListener('click', () => {
 	$('#individualTrainerItemsList div').last().remove();
 });
+
+// #############################################################
+// ######################## Pokémons ###########################
+// #############################################################
+
+var addPokemonFormBtn = document.getElementById('individualTrainerAddPokemon');
+var removePokemonFormBtn = document.getElementById('individualTrainerRemovePokemon')
