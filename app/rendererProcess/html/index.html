@@ -4,17 +4,28 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https;">
 
     <!-- Bootstrap CSS -->
     <link href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="../style/custom.css" rel="stylesheet">
+
+    <!-- 🚨 Notice this link. It's used to enable the dark mode -->
+    <link id="dark-theme-style" rel="stylesheet" />
 
     <title>Essentials PBS Utility</title>
   </head>
 
   <body>
 
-    <div class="container justify-content-md-center">
+    <div class="container justify-content-md-center p-2">
+
+      <a
+        href=""
+        class="btn btn-outline-info btn-lg ml-auto font-weight-bold"
+        id="theme-toggler"
+        onclick="toggleTheme()"
+      ></a>
 
       <!-- Div used for the app introduction -->
       <div id="introduction" class="row m-sm-5">
@@ -162,13 +173,17 @@
 
     </div>
 
+    
     <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="../../../node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     
     <!-- Custom Scripts -->
-    <script src="../js/create-trainer-type.js"></script>
-    <script src="../js/define-individual-trainer.js"></script>
+    <script src="../js/utils/dark-mode.js"></script>
+
+    <!-- Forms Scripts -->
+    <script src="../js/forms/create-trainer-type.js"></script>
+    <script src="../js/forms/define-individual-trainer.js"></script>
 
   </body>
 </html>

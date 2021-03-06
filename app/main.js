@@ -77,6 +77,7 @@ const createTextWindow = (windowPath) => {
       nodeIntegration: false, // is default value after Electron v5
       contextIsolation: true, // protect against prototype pollution
       enableRemoteModule: false, // turn off remote
+      preload: path.join(__dirname, 'preload-context-bridge.js'), // use a preload script
     },
   });
 
