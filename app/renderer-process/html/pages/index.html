@@ -58,7 +58,7 @@
           <!-- !------------------------------------------------------------------------------------------------------------------------------------------- -->
           <!-- Define Trainer Type Form -->
           <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <form id="createTrainerTypeForm">
+            <form id="createTrainerTypeForm" class="needs-validation" novalidate>
               <div class="row row-cols-2">
                 <div class="col mb-3">
                   <label for="trainerTypeId" class="form-label">Trainer ID</label>
@@ -86,7 +86,7 @@
           <!-- !------------------------------------------------------------------------------------------------------------------------------------------- -->
           <!-- Define Individual Trainer form -->
           <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <form id="defineIndividualTrainer">
+            <form id="defineIndividualTrainer" class="needs-validation" novalidate>
               
               <!-- First line: ID, NAME, VERSION -->
               <div class="mb-3 p-2 row row-cols-3 border rounded">
@@ -178,6 +178,7 @@
     <script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom Scripts -->
+    <script src="../../js/utils/form-validation.js"></script>
     <script src="../../js/utils/dark-mode.js"></script>
 
     <!-- Forms Scripts -->
