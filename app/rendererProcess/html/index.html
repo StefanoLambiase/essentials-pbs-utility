@@ -7,11 +7,11 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https;">
 
     <!-- Bootstrap CSS -->
-    <link href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="../style/custom.css" rel="stylesheet">
-
+    <link href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 🚨 Notice this link. It's used to enable the dark mode -->
     <link id="dark-theme-style" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="../style/custom.css" rel="stylesheet">
 
     <title>Essentials PBS Utility</title>
   </head>
@@ -20,15 +20,14 @@
 
     <div class="container justify-content-md-center p-2">
 
-      <a
-        href=""
-        class="btn btn-outline-info btn-lg ml-auto font-weight-bold"
-        id="theme-toggler"
-        onclick="toggleTheme()"
-      ></a>
+      <div class="d-flex justify-content-end">
+        <a href="" class="btn btn-outline-info btn-lg ml-auto font-weight-bold"
+          id="theme-toggler"
+          onclick="toggleTheme()"></a>
+      </div>
 
       <!-- Div used for the app introduction -->
-      <div id="introduction" class="row m-sm-5">
+      <div id="introduction" class="row m-sm-2 mb-sm-5">
         <h1>Pokémon Essentials</h1>
         <h3 style="color: #990000;">PBS Utility</h3>
         <span>
@@ -37,14 +36,15 @@
       </div>
 
       <!-- Div used for the various forms -->
-      <div id="interaction" class="row m-sm-5">
+      <div id="interaction" class="row d-flex justify-content-center m-sm-3">
+        <h5 class="mb-5">Select the type of entity to create...</h5>
         <!-- Interaction selection -->
         <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Trainer Type</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Trainer</button>
+            <button class="nav-link active" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Individual Trainer</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">...</button>
@@ -176,7 +176,7 @@
     
     <!-- Scripts -->
     <script src="../../../node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom Scripts -->
     <script src="../js/utils/dark-mode.js"></script>
