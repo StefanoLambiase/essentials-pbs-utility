@@ -11,15 +11,15 @@
 <!-- Pokémon First line, NAME, LEVEL, GENDER, NICKNAME -->
 <div class="col mb-3">
 	<label for="individualTrainerPokemonInternalName" class="form-label">Pokémon Internal Name</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonInternalName">
+	<input type="text" class="form-control" id="individualTrainerPokemonInternalName" required>
 </div>
 <div class="col mb-3">
 	<label for="individualTrainerPokemonLevel" class="form-label">Pokémon Level</label>
-	<input type="number" class="form-control" id="individualTrainerPokemonLevel">
+	<input type="number" class="form-control" id="individualTrainerPokemonLevel" required min="1" max="100">
 </div>
 <div class="col mb-3">
 	<label for="individualTrainerPokemonGender" class="form-label">Gender</label>
-	<select id="individualTrainerPokemonGender" class="form-select" aria-label="Default select example">
+	<select id="individualTrainerPokemonGender" class="form-select" required>
 		<option selected value="male">male</option>
 		<option value="female">female</option>
 	</select>
@@ -61,88 +61,90 @@
 	<input type="text" class="form-control" id="individualTrainerPokemonItem">
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonForm" class="form-label">Form (0 to ...)</label>
+	<label for="individualTrainerPokemonForm" class="form-label">Pokémon Form (0 to ...)</label>
 	<input type="number" class="form-control" id="individualTrainerPokemonForm">
 </div>
 
 <!-- Pokémon Fourth line, IVs, EVs -->
 <!-- IVs -->
-<div class="col-6 mb-3" id="individualTrainerPokemonIVs">
+<div class="col-3 mb-3" id="individualTrainerPokemonIVs">
 	<label class="form-label">IVs (0 to 31)</label>
 	<div class="input-group mb-3">
 		<span class="input-group-text">HP</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="31">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Attack</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="31">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Defense</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="31">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Speed</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="31">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Special Atk</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="31">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Special Def</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="31">
 	</div>
 </div>
 <!-- EVs -->
-<div class="col-6 mb-3" id="individualTrainerPokemonEVs">
+<div class="col-3 mb-3" id="individualTrainerPokemonEVs">
 	<label class="form-label">EVs (0 to 252)</label>
 	<div class="input-group mb-3">
 		<span class="input-group-text">HP</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="252">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Attack</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="252">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Defense</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="252">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Speed</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="252">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Special Atk</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="252">
 	</div>
 	<div class="input-group mb-3">
 		<span class="input-group-text">Special Def</span>
-		<input type="number" class="form-control">
+		<input type="number" class="form-control" max="252">
 	</div>
 </div>
 
 <!-- Pokémon Fifth line, SHINY, HAPPINESS, BALL, SHADOW -->
-<div class="col mb-3">
-	<label for="individualTrainerPokemonShiny" class="form-label">Shiny</label>
-	<select id="individualTrainerPokemonShiny" class="form-select">
-		<option value="yes">Yes</option>
-		<option selected value="no">No</option>
-	</select>
-</div>
-<div class="col mb-3">
-	<label for="individualTrainerPokemonHappiness" class="form-label">Happiness (0 to 255)</label>
-	<input type="number" class="form-control" id="individualTrainerPokemonHappiness">
-</div>
-<div class="col mb-3">
-	<label for="individualTrainerPokemonBall" class="form-label">Ball</label>
-	<input type="number" value="0" class="form-control" id="individualTrainerPokemonBall">
-</div>
-<div class="col mb-3">
-	<label for="individualTrainerPokemonShadow" class="form-label">Shadow</label>
-	<select id="individualTrainerPokemonShadow" class="form-select">
-		<option value="yes">Yes</option>
-		<option selected value="no">No</option>
-	</select>
+<div class="col-6">
+	<div class="row mb-3">
+		<label for="individualTrainerPokemonShiny" class="form-label">Shiny</label>
+		<select id="individualTrainerPokemonShiny" class="form-select">
+			<option value="yes">Yes</option>
+			<option selected value="no">No</option>
+		</select>
+	</div>
+	<div class="row mb-3">
+		<label for="individualTrainerPokemonHappiness" class="form-label">Happiness (0 to 255)</label>
+		<input type="number" class="form-control" id="individualTrainerPokemonHappiness" max="255">
+	</div>
+	<div class="row mb-3">
+		<label for="individualTrainerPokemonBall" class="form-label">Ball</label>
+		<input type="number" value="0" class="form-control" id="individualTrainerPokemonBall">
+	</div>
+	<div class="row mb-3">
+		<label for="individualTrainerPokemonShadow" class="form-label">Shadow</label>
+		<select id="individualTrainerPokemonShadow" class="form-select">
+			<option value="yes">Yes</option>
+			<option selected value="no">No</option>
+		</select>
+	</div>
 </div>
