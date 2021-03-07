@@ -70,9 +70,19 @@ app.on('activate', () => {
 // * ########################################################
 
 const createTextWindow = (windowPath) => {
+  // Gets main window attributes.
+  const mainWindow = BrowserWindow.fromId(1);
+  const contentBounds = mainWindow.getBounds();
+
+  const numWindows = BrowserWindow.getAllWindows().length;
+  const offsetFromPreviousWindow = (numWindows === 1) ? 0 : (numWindows * 49);
+
+  // Creates the new window.
   const window = new BrowserWindow({
     width: 800,
     height: 600,
+    x: contentBounds.x + mainWindow.getSize()[0],
+    y: contentBounds.y + offsetFromPreviousWindow,
     webPreferences: {
       nodeIntegration: false, // is default value after Electron v5
       contextIsolation: true, // protect against prototype pollution
