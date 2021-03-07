@@ -16,7 +16,7 @@ contextBridge.exposeInMainWorld(
     {
       send: (channel, data) => {
         // whitelist channels
-        const validChannels = ['trainer-type-submission', 'trainer-submission'];
+        const validChannels = ['trainer-type-submission', 'individual-trainer-submission'];
         if (validChannels.includes(channel)) {
           return ipcRenderer.send(channel, data);
         }
