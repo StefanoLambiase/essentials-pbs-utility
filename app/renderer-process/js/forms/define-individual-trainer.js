@@ -1,4 +1,11 @@
 // *#############################################################
+// *################ Components paths vars ######################
+// *#############################################################
+
+const singlePokemonFormPath = '../components/single-pokemon-form.html';
+
+
+// *#############################################################
 // *########################## Items ############################
 // *#############################################################
 
@@ -52,7 +59,7 @@ function createPokemonForm(numPokemonForms) {
   // Takes the form in a HTML file in the components folder.
   // When the form has been loaded, It inserts a title at the beginning of it.
   $(newPokemonElement).load(
-    'components/single-pokemon-form.html',
+    singlePokemonFormPath,
     undefined,
     () => {
       $('<div class="col-12 p-2 mb-2"><h4>Pokémon #' + (numPokemonForms + 1) + '</h4></div>')

@@ -5,6 +5,19 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 
+
+// * ########################################################
+// * ################## Pages Path vars #####################
+// * ########################################################
+
+const pagesPath = 'renderer-process/html/pages/';
+
+const indexPagePath = pagesPath + 'index.html';
+const generatedTextPagePath = pagesPath + 'generated-text.html';
+
+// * ########################################################
+
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -27,7 +40,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadFile(path.join(__dirname, 'rendererProcess/html/index.html'));
+  mainWindow.loadFile(path.join(__dirname, indexPagePath));
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -105,7 +118,7 @@ ipcMain.on('trainer-type-submission', function(event, trainerType) {
   console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
 
   // Creates the window used to show the generated text for trainerType.
-  const generatedTextWindow = createTextWindow('rendererProcess/html/generated-text.html');
+  const generatedTextWindow = createTextWindow(generatedTextPagePath);
 
   // Once the window has been generated, sends the trainerType object to it.
   generatedTextWindow.once('ready-to-show', () => {
