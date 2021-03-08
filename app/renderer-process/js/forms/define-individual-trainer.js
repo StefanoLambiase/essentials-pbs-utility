@@ -18,8 +18,8 @@ var removeItemInputBtn = document.getElementById('individualTrainerRemoveItem');
 
 addItemInputBtn.addEventListener('click', () => {
 	// append input control at end of form
-  $('<div class="col mb-3"><input type="text" class="form-control"></div>')
-     .appendTo('#individualTrainerItemsList');
+	$('<div class="col mb-3"><input type="text" class="form-control"></div>')
+			.appendTo('#individualTrainerItemsList');
 });
 
 removeItemInputBtn.addEventListener('click', () => {
@@ -47,47 +47,47 @@ var individualTrainerPokemonList = document.getElementById('individualTrainerPok
  * @param {Number} numPokemonForms - Number of actual pokémon forms in the DOM.
  */
 function createPokemonForm(numPokemonForms) {
-  // Creates the new element.
-  var newPokemonElement = document.createElement('div');
-  newPokemonElement.className = 'row row-cols-4 border rounded p-2 mb-2';
-  newPokemonElement.id = 'pokemon#' + (numPokemonForms + 1);
+	// Creates the new element.
+	var newPokemonElement = document.createElement('div');
+	newPokemonElement.className = 'row row-cols-4 border rounded p-2 mb-2';
+	newPokemonElement.id = 'pokemon#' + (numPokemonForms + 1);
 
-  // Ads the element to the list of forms.
-  individualTrainerPokemonList.append(newPokemonElement);
+	// Ads the element to the list of forms.
+	individualTrainerPokemonList.append(newPokemonElement);
 
-  // Uses JQuery to insert the form inside the new element.
-  // Takes the form in a HTML file in the components folder.
-  // When the form has been loaded, It inserts a title at the beginning of it.
-  $(newPokemonElement).load(
-    singlePokemonFormPath,
-    undefined,
-    () => {
-      $('<div class="col-12 p-2 mb-2"><h4>Pokémon #' + (numPokemonForms + 1) + '</h4></div>')
-          .prependTo(newPokemonElement);
-    }
-  );
+	// Uses JQuery to insert the form inside the new element.
+	// Takes the form in a HTML file in the components folder.
+	// When the form has been loaded, It inserts a title at the beginning of it.
+	$(newPokemonElement).load(
+		singlePokemonFormPath,
+		undefined,
+		() => {
+			$('<div class="col-12 p-2 mb-2"><h4>Pokémon #' + (numPokemonForms + 1) + '</h4></div>')
+					.prependTo(newPokemonElement);
+		}
+	);
 }
 
 // *################ Listeners ################
 
 // Adds a pokémon form to the list of forms.
 addPokemonFormBtn.addEventListener('click', () => {
-  // Gets information on the actual pokémon forms in the document.
-  var numPokemonForms = individualTrainerPokemonList.childElementCount;
+	// Gets information on the actual pokémon forms in the document.
+	var numPokemonForms = individualTrainerPokemonList.childElementCount;
 
-  if (numPokemonForms < 6) {
-    createPokemonForm(numPokemonForms);
-  } 
+	if (numPokemonForms < 6) {
+		createPokemonForm(numPokemonForms);
+	} 
 });
 
 // Remove the last pokémon form to the list of forms.
 removePokemonFormBtn.addEventListener('click', () => {
-  // Gets information on the actual pokémon forms in the document.
-  var numPokemonForms = individualTrainerPokemonList.childElementCount;
+	// Gets information on the actual pokémon forms in the document.
+	var numPokemonForms = individualTrainerPokemonList.childElementCount;
 
-  if (numPokemonForms > 1) {
-    individualTrainerPokemonList.removeChild(individualTrainerPokemonList.lastChild);
-  }
+	if (numPokemonForms > 1) {
+		individualTrainerPokemonList.removeChild(individualTrainerPokemonList.lastChild);
+	}
 });
 
 
@@ -99,78 +99,88 @@ removePokemonFormBtn.addEventListener('click', () => {
 createPokemonForm(0);
 
 
-// * Form Submission part
+// *################ Form Submission Part ################
 
+// The form used to define an Individual Trainer.
 const defineIndividualTrainerForm = document.getElementById('defineIndividualTrainer');
 
-function sendForm(event) {
-  console.log('DEFINE INDIVIDUAL TRAINER: submitting form.')
-  event.preventDefault(); // stop the form from submitting
+/**
+ * Gets the informations about a trainer from the form in the view
+ * and sends it to the main process (main.js).
+ * @param {*} event 
+ */
+function sendIndividualTrainerForm(event) {
+	console.log('DEFINE INDIVIDUAL TRAINER: submitting form.')
+	event.preventDefault(); // stop the form from submitting
 
-  // Gets Items part
-  const itemsDivElement = document.getElementById('individualTrainerItemsList');
-  let items = [];
-  if (itemsDivElement.children.length !== 0) {
-    for (let divItem of itemsDivElement.children) {
-      const inputItem = divItem.firstElementChild;
-      items.push($(inputItem).val());
-    }
-  }
+	// Gets Items part
+	const itemsDivElement = document.getElementById('individualTrainerItemsList');
+	let itemList = [];
+	if (itemsDivElement.children.length !== 0) {
+		for (let divItem of itemsDivElement.children) {
+			const inputItem = divItem.firstElementChild;
+			itemList.push($(inputItem).val());
+		}
+	}
 
-  // Gets Pokémons part
-  let pokemonList = [];
-  for (let pokemonItem of individualTrainerPokemonList.children) {
-    const attributesInputs = pokemonItem.getElementsByTagName('input');
-    const attributesSelects = pokemonItem.getElementsByTagName('select');
+	// Gets Pokémons part
+	let pokemonList = [];
+	for (let pokemonItem of individualTrainerPokemonList.children) {
+		// Gets the form's fields.
+		const attributesInputs = pokemonItem.getElementsByTagName('input');
+		const attributesSelects = pokemonItem.getElementsByTagName('select');
+		
+		// Creates the pokémon object.
+		const pokemon = {
+			internalName: attributesInputs.namedItem('individualTrainerPokemonInternalName').value,
+			level: attributesInputs.namedItem('individualTrainerPokemonLevel').valueAsNumber,
+			item: attributesInputs.namedItem('individualTrainerPokemonItem').value,
+			moves: attributesInputs.namedItem('individualTrainerPokemonMoves1').value + ',' +
+						 attributesInputs.namedItem('individualTrainerPokemonMoves2').value + ',' +
+					   attributesInputs.namedItem('individualTrainerPokemonMoves3').value + ',' +
+					   attributesInputs.namedItem('individualTrainerPokemonMoves4').value,
+			ability: attributesInputs.namedItem('individualTrainerPokemonAbility').value,
+			gender: attributesSelects.namedItem('individualTrainerPokemonGender').value,
+			form: attributesInputs.namedItem('individualTrainerPokemonForm').value,
+			shiny: attributesSelects.namedItem('individualTrainerPokemonShiny').value,
+			nature: attributesInputs.namedItem('individualTrainerPokemonNature').value,
+			iv: attributesInputs.namedItem('iv1').value + ',' +
+					attributesInputs.namedItem('iv2').value + ',' +
+					attributesInputs.namedItem('iv3').value + ',' +
+					attributesInputs.namedItem('iv4').value + ',' +
+					attributesInputs.namedItem('iv5').value + ',' +
+					attributesInputs.namedItem('iv6').value,
+			ev: attributesInputs.namedItem('ev1').value + ',' +
+					attributesInputs.namedItem('ev2').value + ',' +
+					attributesInputs.namedItem('ev3').value + ',' +
+					attributesInputs.namedItem('ev4').value + ',' +
+					attributesInputs.namedItem('ev5').value + ',' +
+					attributesInputs.namedItem('ev6').value,
+			happiness: attributesInputs.namedItem('individualTrainerPokemonHappiness').value,
+			name: attributesInputs.namedItem('individualTrainerPokemonNickname').value,
+			shadow: attributesSelects.namedItem('individualTrainerPokemonShadow').value,
+			ball: attributesInputs.namedItem('individualTrainerPokemonBall').value,
+		};
 
-    const pokemon = {
-      internalName: attributesInputs.namedItem('individualTrainerPokemonInternalName').value,
-      level: attributesInputs.namedItem('individualTrainerPokemonLevel').valueAsNumber,
-      item: attributesInputs.namedItem('individualTrainerPokemonItem').value,
-      moves: attributesInputs.namedItem('individualTrainerPokemonMoves1').value + ',' +
-          attributesInputs.namedItem('individualTrainerPokemonMoves2').value + ',' +
-          attributesInputs.namedItem('individualTrainerPokemonMoves3').value + ',' +
-          attributesInputs.namedItem('individualTrainerPokemonMoves4').value,
-      ability: attributesInputs.namedItem('individualTrainerPokemonAbility').value,
-      gender: attributesSelects.namedItem('individualTrainerPokemonGender').value,
-      form: attributesInputs.namedItem('individualTrainerPokemonForm').value,
-      shiny: attributesSelects.namedItem('individualTrainerPokemonShiny').value,
-      nature: attributesInputs.namedItem('individualTrainerPokemonNature').value,
-      iv: attributesInputs.namedItem('iv1').value + ',' +
-          attributesInputs.namedItem('iv2').value + ',' +
-          attributesInputs.namedItem('iv3').value + ',' +
-          attributesInputs.namedItem('iv4').value + ',' +
-          attributesInputs.namedItem('iv5').value + ',' +
-          attributesInputs.namedItem('iv6').value,
-      ev: attributesInputs.namedItem('ev1').value + ',' +
-          attributesInputs.namedItem('ev2').value + ',' +
-          attributesInputs.namedItem('ev3').value + ',' +
-          attributesInputs.namedItem('ev4').value + ',' +
-          attributesInputs.namedItem('ev5').value + ',' +
-          attributesInputs.namedItem('ev6').value,
-      happiness: attributesInputs.namedItem('individualTrainerPokemonHappiness').value,
-      name: attributesInputs.namedItem('individualTrainerPokemonNickname').value,
-      shadow: attributesSelects.namedItem('individualTrainerPokemonShadow').value,
-      ball: attributesInputs.namedItem('individualTrainerPokemonBall').value,
-    };
+		pokemonList.push(pokemon);
+	}
 
-    pokemonList.push(pokemon);
-    console.log(pokemon);
-  }
+	// Creates the Trainer object to send.
+	let individualTrainer = {
+		trainerType: $('#individualTrainerId').val(),
+		trainerName: $('#individualTrainerName').val(),
+		trainerVersion: $('#individualTrainerId').val(),
+		trainerItems: itemList,
+		trainerLoseText: $('#individualTrainerLoseText').val(),
+		trainerPokemonList: pokemonList
+	};
 
-  // Object to send part
-  let individualTrainer = {
-    trainerType: $('#individualTrainerId').val(),
-    trainerName: $('#individualTrainerName').val(),
-    trainerVersion: $('#individualTrainerId').val(),
-    trainerItems: items,
-    trainerLoseText: $('#individualTrainerLoseText').val(),
-    trainerPokemonList: pokemonList
-  };
+	console.log('DEFINE INDIVIDUAL TRAINER: Trainer Submitted.')
+	console.table(individualTrainer);
 
-  console.table(individualTrainer);
-
-  //window.bridgeToMain.send('trainer-type-submission', trainerType);
+	//window.bridgeToMain.send('trainer-type-submission', trainerType);
 }
 
-defineIndividualTrainerForm.addEventListener('submit', sendForm)
+
+// Adds the function to the individual trainer form submission.
+defineIndividualTrainerForm.addEventListener('submit', sendIndividualTrainerForm)
