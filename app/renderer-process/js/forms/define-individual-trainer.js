@@ -184,3 +184,4 @@ function sendIndividualTrainerForm(event) {
 
 // Adds the function to the individual trainer form submission.
 defineIndividualTrainerForm.addEventListener('submit', sendIndividualTrainerForm)
+
