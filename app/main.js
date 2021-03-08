@@ -5,6 +5,8 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 
+const individualTrainerController = require('./main-process/domain/individual-trainer/individual-trainer-controller');
+
 
 // * ########################################################
 // * ################## Pages Path vars #####################
@@ -13,7 +15,7 @@ const path = require('path');
 const pagesPath = 'renderer-process/html/pages/';
 
 const indexPagePath = pagesPath + 'index.html';
-const generatedTextPagePath = pagesPath + 'generated-text.html';
+const showTextPagePath = pagesPath + 'show-text.html';
 
 // * ########################################################
 
@@ -124,5 +126,20 @@ ipcMain.on('trainer-type-submission', function(event, trainerType) {
   generatedTextWindow.once('ready-to-show', () => {
     generatedTextWindow.show();
     generatedTextWindow.webContents.send('generate-text', trainerType);
+  });
+});
+
+ipcMain.on('individual-trainer-submission', function(event, individualTrainer) {
+  console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
+
+  const s = individualTrainerController.generateIndividualTrainerString(individualTrainer);
+
+  // Creates the window used to show the generated text for trainerType.
+  const generatedTextWindow = createTextWindow(showTextPagePath);
+
+  // Once the window has been generated, sends the trainerType object to it.
+  generatedTextWindow.once('ready-to-show', () => {
+    generatedTextWindow.show();
+    generatedTextWindow.webContents.send('show-text', s);
   });
 });

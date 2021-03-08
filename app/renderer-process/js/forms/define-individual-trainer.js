@@ -136,9 +136,9 @@ function sendIndividualTrainerForm(event) {
 			level: attributesInputs.namedItem('individualTrainerPokemonLevel').valueAsNumber,
 			item: attributesInputs.namedItem('individualTrainerPokemonItem').value,
 			moves: attributesInputs.namedItem('individualTrainerPokemonMoves1').value + ',' +
-						 attributesInputs.namedItem('individualTrainerPokemonMoves2').value + ',' +
-					   attributesInputs.namedItem('individualTrainerPokemonMoves3').value + ',' +
-					   attributesInputs.namedItem('individualTrainerPokemonMoves4').value,
+					attributesInputs.namedItem('individualTrainerPokemonMoves2').value + ',' +
+					attributesInputs.namedItem('individualTrainerPokemonMoves3').value + ',' +
+					attributesInputs.namedItem('individualTrainerPokemonMoves4').value,
 			ability: attributesInputs.namedItem('individualTrainerPokemonAbility').value,
 			gender: attributesSelects.namedItem('individualTrainerPokemonGender').value,
 			form: attributesInputs.namedItem('individualTrainerPokemonForm').value,
@@ -178,7 +178,7 @@ function sendIndividualTrainerForm(event) {
 	console.log('DEFINE INDIVIDUAL TRAINER: Trainer Submitted.')
 	console.table(individualTrainer);
 
-	//window.bridgeToMain.send('trainer-type-submission', trainerType);
+	window.bridgeToMain.send('individual-trainer-submission', individualTrainer);
 }
 
 

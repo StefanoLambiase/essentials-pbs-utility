@@ -22,7 +22,7 @@ contextBridge.exposeInMainWorld(
         }
       },
       onReceive: (channel, func) => {
-        const validChannels = ['generate-text'];
+        const validChannels = ['show-text'];
         if (validChannels.includes(channel)) {
           // Deliberately strip event as it includes `sender`.
           ipcRenderer.on(channel, (event, ...args) => func(...args));
