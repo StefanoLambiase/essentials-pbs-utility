@@ -97,3 +97,80 @@ removePokemonFormBtn.addEventListener('click', () => {
 
 // Ads the first pokémon form element on startup.
 createPokemonForm(0);
+
+
+// * Form Submission part
+
+const defineIndividualTrainerForm = document.getElementById('defineIndividualTrainer');
+
+function sendForm(event) {
+  console.log('DEFINE INDIVIDUAL TRAINER: submitting form.')
+  event.preventDefault(); // stop the form from submitting
+
+  // Gets Items part
+  const itemsDivElement = document.getElementById('individualTrainerItemsList');
+  let items = [];
+  if (itemsDivElement.children.length !== 0) {
+    for (let divItem of itemsDivElement.children) {
+      const inputItem = divItem.firstElementChild;
+      items.push($(inputItem).val());
+    }
+  }
+
+  // Gets Pokémons part
+  let pokemonList = [];
+  for (let pokemonItem of individualTrainerPokemonList.children) {
+    const attributesInputs = pokemonItem.getElementsByTagName('input');
+    const attributesSelects = pokemonItem.getElementsByTagName('select');
+
+    const pokemon = {
+      internalName: attributesInputs.namedItem('individualTrainerPokemonInternalName').value,
+      level: attributesInputs.namedItem('individualTrainerPokemonLevel').valueAsNumber,
+      item: attributesInputs.namedItem('individualTrainerPokemonItem').value,
+      moves: attributesInputs.namedItem('individualTrainerPokemonMoves1').value + ',' +
+          attributesInputs.namedItem('individualTrainerPokemonMoves2').value + ',' +
+          attributesInputs.namedItem('individualTrainerPokemonMoves3').value + ',' +
+          attributesInputs.namedItem('individualTrainerPokemonMoves4').value,
+      ability: attributesInputs.namedItem('individualTrainerPokemonAbility').value,
+      gender: attributesSelects.namedItem('individualTrainerPokemonGender').value,
+      form: attributesInputs.namedItem('individualTrainerPokemonForm').value,
+      shiny: attributesSelects.namedItem('individualTrainerPokemonShiny').value,
+      nature: attributesInputs.namedItem('individualTrainerPokemonNature').value,
+      iv: attributesInputs.namedItem('iv1').value + ',' +
+          attributesInputs.namedItem('iv2').value + ',' +
+          attributesInputs.namedItem('iv3').value + ',' +
+          attributesInputs.namedItem('iv4').value + ',' +
+          attributesInputs.namedItem('iv5').value + ',' +
+          attributesInputs.namedItem('iv6').value,
+      ev: attributesInputs.namedItem('ev1').value + ',' +
+          attributesInputs.namedItem('ev2').value + ',' +
+          attributesInputs.namedItem('ev3').value + ',' +
+          attributesInputs.namedItem('ev4').value + ',' +
+          attributesInputs.namedItem('ev5').value + ',' +
+          attributesInputs.namedItem('ev6').value,
+      happiness: attributesInputs.namedItem('individualTrainerPokemonHappiness').value,
+      name: attributesInputs.namedItem('individualTrainerPokemonNickname').value,
+      shadow: attributesSelects.namedItem('individualTrainerPokemonShadow').value,
+      ball: attributesInputs.namedItem('individualTrainerPokemonBall').value,
+    };
+
+    pokemonList.push(pokemon);
+    console.log(pokemon);
+  }
+
+  // Object to send part
+  let individualTrainer = {
+    trainerType: $('#individualTrainerId').val(),
+    trainerName: $('#individualTrainerName').val(),
+    trainerVersion: $('#individualTrainerId').val(),
+    trainerItems: items,
+    trainerLoseText: $('#individualTrainerLoseText').val(),
+    trainerPokemonList: pokemonList
+  };
+
+  console.table(individualTrainer);
+
+  //window.bridgeToMain.send('trainer-type-submission', trainerType);
+}
+
+defineIndividualTrainerForm.addEventListener('submit', sendForm)
