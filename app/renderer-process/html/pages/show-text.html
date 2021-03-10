@@ -1,31 +1,44 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https;">
 
 	<!-- Bootstrap CSS -->
-    <link href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- 🚨 Notice this link. It's used to enable the dark mode -->
+	<link id="dark-theme-style" rel="stylesheet" />
+	<!-- Custom CSS -->
+	<link href="../../style/custom.css" rel="stylesheet">
 
 	<title>Essentials PBS Utility</title>
-  </head>
-  <body>
-	<div class="container">
-	  
+</head>
+
+<body>
+	<div class="container justify-content-md-center p-2">
+
+		<h2>Text Generated</h2>
+
 		<div class="form-group">
-			<label for="exampleFormControlTextarea3">Rounded corners</label>
-			<textarea class="form-control" id="exampleFormControlTextarea3" rows="7"></textarea>
+			<label for="exampleFormControlTextarea3">Insert it in your PBS file.</label>
+			<textarea class="form-control" id="exampleFormControlTextarea3" rows="14"
+				style="font-family: consolas;"></textarea>
 		</div>
 
 	</div>
 
 	<!-- Scripts -->
-	<script src="../../../../node_modules/jquery/dist/jquery.slim.min.js"></script>
-    <script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	
+	<script src="../../../../node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 	<!-- Custom Scripts -->
+	<script src="../../js/utils/dark-mode.js"></script>
+
+	<!-- Specific Page Scripts -->
 	<script src="../../js/show-text/show-text.js"></script>
-  </body>
+</body>
+
 </html>

@@ -94,7 +94,7 @@ const createTextWindow = (windowPath) => {
 
   // Creates the new window.
   const window = new BrowserWindow({
-    width: 800,
+    width: 400,
     height: 600,
     x: contentBounds.x + mainWindow.getSize()[0],
     y: contentBounds.y + offsetFromPreviousWindow,
