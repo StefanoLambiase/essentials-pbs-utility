@@ -5,19 +5,11 @@
 const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 
+// Call script used for global variables.
+require('./main-process/utils/main-globals');
+
+// Main Process scripts.
 const individualTrainerController = require('./main-process/domain/individual-trainer/individual-trainer-controller');
-
-
-// * ########################################################
-// * ################## Pages Path vars #####################
-// * ########################################################
-
-const pagesPath = 'renderer-process/html/pages/';
-
-const indexPagePath = pagesPath + 'index.html';
-const showTextPagePath = pagesPath + 'show-text.html';
-
-// * ########################################################
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
