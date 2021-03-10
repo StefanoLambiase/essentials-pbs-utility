@@ -171,7 +171,15 @@ function sendIndividualTrainerForm(event) {
 	console.log('DEFINE INDIVIDUAL TRAINER: Trainer Submitted.')
 	console.table(individualTrainer);
 
-	window.bridgeToMain.send('individual-trainer-submission', individualTrainer);
+	
+	const formData = {
+		type: 'individual-trainer',
+		data: individualTrainer,
+	}
+
+	//window.bridgeToMain.send('individual-trainer-submission', individualTrainer);
+
+	window.bridgeToMain.send('form-submission', formData);
 }
 
 

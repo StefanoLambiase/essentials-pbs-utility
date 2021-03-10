@@ -86,7 +86,7 @@ const createTextWindow = (windowPath) => {
 
   // Creates the new window.
   const window = new BrowserWindow({
-    width: 400,
+    width: 600,
     height: 600,
     x: contentBounds.x + mainWindow.getSize()[0],
     y: contentBounds.y + offsetFromPreviousWindow,
@@ -108,23 +108,26 @@ const createTextWindow = (windowPath) => {
 };
 
 
-ipcMain.on('trainer-type-submission', function(event, trainerType) {
+// * ########################################################
+// * ############### Main process Callbacks #################
+// * ########################################################
+
+ipcMain.on('form-submission', function(event, formData) {
   console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
 
-  // Creates the window used to show the generated text for trainerType.
-  const generatedTextWindow = createTextWindow(generatedTextPagePath);
+  let stringToSend = '';
 
-  // Once the window has been generated, sends the trainerType object to it.
-  generatedTextWindow.once('ready-to-show', () => {
-    generatedTextWindow.show();
-    generatedTextWindow.webContents.send('generate-text', trainerType);
-  });
-});
-
-ipcMain.on('individual-trainer-submission', function(event, individualTrainer) {
-  console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
-
-  const s = individualTrainerController.generateIndividualTrainerString(individualTrainer);
+  switch (formData.type) {
+    case 'individual-trainer':
+      stringToSend = individualTrainerController.generateIndividualTrainerString(formData.data);
+      break;
+    case 'trainer-type':
+      stringToSend = `Sorry, ${formData.type} not yet supported.`;
+      break;
+    default:
+      stringToSend = `Form data: ${formData.type}, not supported! Add it to the 'preload-context-bridge.js' file.`;
+      console.log(stringToSend);
+  }
 
   // Creates the window used to show the generated text for trainerType.
   const generatedTextWindow = createTextWindow(showTextPagePath);
@@ -132,6 +135,7 @@ ipcMain.on('individual-trainer-submission', function(event, individualTrainer) {
   // Once the window has been generated, sends the trainerType object to it.
   generatedTextWindow.once('ready-to-show', () => {
     generatedTextWindow.show();
-    generatedTextWindow.webContents.send('show-text', s);
+    generatedTextWindow.webContents.send('show-text', stringToSend);
   });
 });
+
