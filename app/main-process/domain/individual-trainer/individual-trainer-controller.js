@@ -1,4 +1,3 @@
-
 /**
  * Gets a IndividualTrainer and create a string for the PBS file.
  * @param {*} individualTrainer - The object to transform into a string.
@@ -7,13 +6,14 @@
 function generateIndividualTrainerString(individualTrainer) {
   const item = individualTrainer;
 
+  const commentString = '#-------------------------------\n';
   const trainerStringList = [];
 
   trainerStringList[0] = `[${item.trainerType},${item.trainerName}`;
-  if (item.trainerVersion ==! '') trainerStringList[0] += `,${item.trainerVersion}`;
+  if (item.trainerVersion !== '') trainerStringList[0] += `,${item.trainerVersion}`;
   trainerStringList[0] += ']';
 
-  if (item.trainerItems !== '') trainerStringList[1] = `Items = ${item.trainerItems}`;
+  if (item.trainerItems.length > 0) trainerStringList[1] = `Items = ${item.trainerItems}`;
   if (item.trainerLoseText !== '') trainerStringList[2] = `LoseText = "${item.trainerLoseText}"`;
 
   for (const pokemon of item.trainerPokemonList) {
@@ -27,8 +27,10 @@ function generateIndividualTrainerString(individualTrainer) {
     pRowList[5] = (pokemon.form !== '') ? `   Form = ${pokemon.form}` : undefined;
     pRowList[6] = `    Shiny = ${pokemon.shiny}`;
     pRowList[7] = (pokemon.nature !== '') ? `    Nature = ${pokemon.nature}` : undefined;
-    pRowList[8] = (pokemon.iv !== '') ? `    IV = ${pokemon.iv}` : undefined;
-    pRowList[9] = (pokemon.ev !== '') ? `    EV = ${pokemon.ev}` : undefined;
+
+    pRowList[8] = (pokemon.iv !== ',,,,,') ? `    IV = ${pokemon.iv}` : undefined;
+    pRowList[9] = (pokemon.ev !== ',,,,,') ? `    EV = ${pokemon.ev}` : undefined;
+
     pRowList[10] = (pokemon.happiness !== '') ? `    Happiness = ${pokemon.happiness}` : undefined;
     pRowList[11] = (pokemon.name !== '') ? `    Name = ${pokemon.name}` : undefined;
     pRowList[12] = `    Shadow = ${pokemon.shadow}`;
@@ -42,7 +44,7 @@ function generateIndividualTrainerString(individualTrainer) {
   }
 
   console.log(trainerStringList.join('\n'));
-  return trainerStringList.join('\n');
+  return commentString + trainerStringList.join('\n');
 }
 
 

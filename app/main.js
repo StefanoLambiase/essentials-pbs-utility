@@ -87,7 +87,7 @@ const createTextWindow = (windowPath) => {
   // Creates the new window.
   const window = new BrowserWindow({
     width: 600,
-    height: 600,
+    height: 800,
     x: contentBounds.x + mainWindow.getSize()[0],
     y: contentBounds.y + offsetFromPreviousWindow,
     webPreferences: {
@@ -102,17 +102,18 @@ const createTextWindow = (windowPath) => {
   window.loadFile(path.join(__dirname, windowPath));
 
   // Open the DevTools.
-  window.webContents.openDevTools();
+  // window.webContents.openDevTools();
 
   return window;
 };
 
-
-// * ########################################################
-// * ############### Main process Callbacks #################
-// * ########################################################
-
-ipcMain.on('form-submission', function(event, formData) {
+/**
+ * Is called when a renderer process submits a form. It uses the 'type' in the 'formData' to
+ * know wich text needs to be generated and sends it to a new window.
+ * @param {*} event - Contains information about the renderer process that calls the main process.
+ * @param {*} formData - The data inserted by the user in the form.
+ */
+const onFormSubmission = (event, formData) => {
   console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
 
   let stringToSend = '';
@@ -137,5 +138,11 @@ ipcMain.on('form-submission', function(event, formData) {
     generatedTextWindow.show();
     generatedTextWindow.webContents.send('show-text', stringToSend);
   });
-});
+};
 
+
+// * ########################################################
+// * ############### Main process Callbacks #################
+// * ########################################################
+
+ipcMain.on('form-submission', onFormSubmission);
