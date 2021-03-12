@@ -162,7 +162,7 @@ function sendIndividualTrainerForm(event) {
 	let individualTrainer = {
 		trainerType: $('#individualTrainerId').val(),
 		trainerName: $('#individualTrainerName').val(),
-		trainerVersion: $('#individualTrainerId').val(),
+		trainerVersion: $('#individualTrainerVersionNumber').val(),
 		trainerItems: itemList,
 		trainerLoseText: $('#individualTrainerLoseText').val(),
 		trainerPokemonList: pokemonList

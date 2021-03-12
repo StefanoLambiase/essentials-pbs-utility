@@ -9,7 +9,9 @@ function generateIndividualTrainerString(individualTrainer) {
 
   const trainerStringList = [];
 
-  trainerStringList[0] = `[${item.trainerType},${item.trainerName},${item.trainerVersion}]`;
+  trainerStringList[0] = `[${item.trainerType},${item.trainerName}`;
+  if (item.trainerVersion ==! '') trainerStringList[0] += `,${item.trainerVersion}`;
+  trainerStringList[0] += ']';
 
   if (item.trainerItems !== '') trainerStringList[1] = `Items = ${item.trainerItems}`;
   if (item.trainerLoseText !== '') trainerStringList[2] = `LoseText = "${item.trainerLoseText}"`;
