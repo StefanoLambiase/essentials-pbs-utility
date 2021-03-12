@@ -4,47 +4,48 @@
  * @return {string} - The string to insert into the PBS file.
  */
 function generateIndividualTrainerString(individualTrainer) {
-  const item = individualTrainer;
+  const trainerStringList = []; // Creates an array that will contains all the strings.
 
-  const commentString = '#-------------------------------\n';
-  const trainerStringList = [];
-
-  trainerStringList[0] = `[${item.trainerType},${item.trainerName}`;
-  if (item.trainerVersion !== '') trainerStringList[0] += `,${item.trainerVersion}`;
+  // Final String Line #1
+  trainerStringList[0] = `[${individualTrainer.trainerType},${individualTrainer.trainerName}`;
+  if (individualTrainer.trainerVersion !== '') trainerStringList[0] += `,${individualTrainer.trainerVersion}`;
   trainerStringList[0] += ']';
 
-  if (item.trainerItems.length > 0) trainerStringList[1] = `Items = ${item.trainerItems}`;
-  if (item.trainerLoseText !== '') trainerStringList[2] = `LoseText = "${item.trainerLoseText}"`;
+  // Final String Line #2 and #3
+  if (individualTrainer.trainerItems.length > 0) {
+    trainerStringList[1] = `Items = ${individualTrainer.trainerItems}`;
+  }
+  if (individualTrainer.trainerLoseText !== '') {
+    trainerStringList[2] = `LoseText = "${individualTrainer.trainerLoseText}"`;
+  }
 
-  for (const pokemon of item.trainerPokemonList) {
+  // Final String Pokémon section
+  for (const pokemon of individualTrainer.trainerPokemonList) {
     let pRowList = [];
 
-    pRowList[0] = `Pokemon = ${pokemon.internalName},${pokemon.level}`;
-    pRowList[1] = (pokemon.item !== '') ? `   Item = ${pokemon.item}` : undefined;
-    pRowList[2] = (pokemon.moves !== '') ? `    Moves = ${pokemon.moves}` : undefined;
-    pRowList[3] = (pokemon.ability !== '') ? `    Ability = ${pokemon.ability}` : undefined;
-    pRowList[4] = `    Gender = ${pokemon.gender}`;
-    pRowList[5] = (pokemon.form !== '') ? `   Form = ${pokemon.form}` : undefined;
-    pRowList[6] = `    Shiny = ${pokemon.shiny}`;
-    pRowList[7] = (pokemon.nature !== '') ? `    Nature = ${pokemon.nature}` : undefined;
+    pRowList[0] = `Pokemon = ${pokemon.internalName},${pokemon.level}`; // Name & Level
+    pRowList[1] = (pokemon.item !== '') ? `   Item = ${pokemon.item}` : null; // Item
+    pRowList[2] = (pokemon.moves !== ',,,') ? `    Moves = ${pokemon.moves}` : null; // Moves
+    pRowList[3] = (pokemon.ability !== '') ? `    Ability = ${pokemon.ability}` : null; // Ability
+    pRowList[4] = `    Gender = ${pokemon.gender}`; // Gender
+    pRowList[5] = (pokemon.form !== '') ? `   Form = ${pokemon.form}` : null; // Form
+    pRowList[6] = `    Shiny = ${pokemon.shiny}`; // Shiny
+    pRowList[7] = (pokemon.nature !== '') ? `    Nature = ${pokemon.nature}` : null; // Nature
+    pRowList[8] = (pokemon.iv !== ',,,,,') ? `    IV = ${pokemon.iv}` : null; // IV
+    pRowList[9] = (pokemon.ev !== ',,,,,') ? `    EV = ${pokemon.ev}` : null; // EV
+    pRowList[10] = (pokemon.happiness !== '') ? `    Happiness = ${pokemon.happiness}` : null; // Happiness
+    pRowList[11] = (pokemon.name !== '') ? `    Name = ${pokemon.name}` : null; // Nickname
+    pRowList[12] = `    Shadow = ${pokemon.shadow}`; // Shadow
+    pRowList[13] = (pokemon.ball !== '') ? `    Ball = ${pokemon.ball}` : null; // Ball type
 
-    pRowList[8] = (pokemon.iv !== ',,,,,') ? `    IV = ${pokemon.iv}` : undefined;
-    pRowList[9] = (pokemon.ev !== ',,,,,') ? `    EV = ${pokemon.ev}` : undefined;
-
-    pRowList[10] = (pokemon.happiness !== '') ? `    Happiness = ${pokemon.happiness}` : undefined;
-    pRowList[11] = (pokemon.name !== '') ? `    Name = ${pokemon.name}` : undefined;
-    pRowList[12] = `    Shadow = ${pokemon.shadow}`;
-    pRowList[13] = (pokemon.ball !== '') ? `    Ball = ${pokemon.ball}` : undefined;
-
-    pRowList = pRowList.filter( (el) => {
-      return el != undefined;
-    });
-
+    // Deletes null elements from the array.
+    pRowList = pRowList.filter( (el) => el != null );
+    // Ads the pokémon String to the main trainer String.
     trainerStringList.push(pRowList.join('\n'));
   }
 
-  console.log(trainerStringList.join('\n'));
-  return commentString + trainerStringList.join('\n');
+  console.log('\nINDIVIDUAL-TRAINER-CONTROLLER: composed string\n' + trainerStringList.join('\n'));
+  return '#-------------------------------\n' + trainerStringList.join('\n');
 }
 
 
