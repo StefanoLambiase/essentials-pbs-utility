@@ -14,12 +14,14 @@
   "keywords": [],
   "author": {
     "name": "Stefano Lambiase",
-    "email": "stefanolambiase96@gmail.com"
+    "email": "stefanolambiase7@gmail.com"
   },
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "./assets/icons/app-icon"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",

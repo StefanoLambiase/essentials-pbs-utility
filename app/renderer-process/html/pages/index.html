@@ -20,19 +20,28 @@
 
     <div class="container justify-content-md-center p-2">
 
-      <div class="d-flex justify-content-end">
+      <div class="d-flex justify-content-end mb-3">
         <a href="" class="btn btn-outline-info btn-lg ml-auto font-weight-bold"
           id="theme-toggler"></a>
       </div>
 
       <!-- Div used for the app introduction -->
       <div id="introduction" class="row m-sm-2 mb-sm-5">
-        <h1>Pokémon Essentials</h1>
-        <h3 style="color: #990000;">PBS Utility</h3>
-        <span>
-          This is a desktop app built to help <strong>Pokémon Essentials</strong> users in the creation of text for the PBS txt files.
-        </span>
+        <div class="col-8 mb-3">
+          <h1>Pokémon Essentials</h1>
+          <h3 style="color: #990000;">PBS Utility</h3>
+          <span>
+            This is a desktop app built to help <strong>Pokémon Essentials</strong> users in the creation of text for the PBS txt files.
+            It is built with <strong>Electron, HTML, JavaScript, JQuery, and Bootstrap</strong>.
+          </span>
+        </div>
+
+        <div class="col-4 mb-3">
+          <img src="../../../../assets/icons/app-icon.png" class="img-fluid rounded float-end" alt="...">
+        </div>
       </div>
+
+      <hr class="mt-2 mb-3"/> <!-- Simple divider -->
 
       <!-- Div used for the various forms -->
       <div id="interaction" class="row d-flex justify-content-center m-sm-3">
@@ -132,7 +141,7 @@
               </div> <!-- Close Fourth Line, POKéMONS-->
 
               <!-- Form buttons -->
-              <div class="row d-grid gap-2 col-6 mx-auto mb-3">
+              <div class="d-grid gap-2 col-6 mx-auto mb-3">
                 <button type="submit" class="btn btn-primary" id="defineIndividualTrainerButton">Submit</button>
               </div>
               <div class="d-grid gap-2 col-3 mx-auto">
