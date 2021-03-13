@@ -22,8 +22,7 @@
 
       <div class="d-flex justify-content-end">
         <a href="" class="btn btn-outline-info btn-lg ml-auto font-weight-bold"
-          id="theme-toggler"
-          onclick="toggleTheme()"></a>
+          id="theme-toggler"></a>
       </div>
 
       <!-- Div used for the app introduction -->
@@ -57,29 +56,8 @@
           <!-- !------------------------------------------------------------------------------------------------------------------------------------------- -->
           <!-- !------------------------------------------------------------------------------------------------------------------------------------------- -->
           <!-- Define Trainer Type Form -->
-          <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <form id="createTrainerTypeForm" class="needs-validation" novalidate>
-              <div class="row row-cols-2">
-                <div class="col mb-3">
-                  <label for="trainerTypeId" class="form-label">Trainer ID</label>
-                  <input type="text" class="form-control" id="trainerTypeId">
-                </div>
-                <div class="col mb-3">
-                  <label for="trainerTypeInternalName" class="form-label">Trainer Internal Name</label>
-                  <input type="text" class="form-control" id="trainerTypeInternalName">
-                </div>
-                <div class="col mb-3">
-                  <label for="trainerTypeDisplayName" class="form-label">Trainer Display Name</label>
-                  <input type="text" class="form-control" id="trainerTypeDisplayName">
-                </div>
-                <div class="col mb-3">
-                  <label for="trainerTypeBaseMoney" class="form-label">Trainer Base Money</label>
-                  <input type="number" class="form-control" id="trainerTypeBaseMoney">
-                </div>
-              </div>
-    
-              <button type="submit" class="btn btn-primary" id="createTrainerTypeButton">Submit</button>
-            </form>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+            Ops, not yet implemented 😭
           </div>
 
           <!-- !------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -168,22 +146,41 @@
         </div>
       </div>
 
+
+      <!-- Alert for form validation -->
+      <div id="failAlert" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <p class="text-center">
+          <strong>Fields validation failed. Please, check and retry!</strong>
+        </p>
+      </div>
+      <div id="successAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <p class="text-center">
+          <strong>Form submitted</strong>
+        </p>
+      </div>
+
     </div>
 
     
     <!-- Scripts -->
+
+    <!-- Globals: IMPORTANT: it must be always the first script loaded -->
+    <script src="../../js/utils/globals.js"></script>
+
+    <!-- Bootstrap and JQuery -->
     <script src="../../../../node_modules/jquery/dist/jquery.min.js"></script>
     <script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Custom Scripts -->
-    <script src="../../js/utils/globals.js"></script>   <!-- Globals Vars -->
-    <script src="../../js/utils/dark-mode.js"></script>
+    <script src="../../js/utils/dark-mode.js"></script> <!-- Dark theme script -->
+    <!-- Hides all the alerts -->
+    <script>
+      $(window.successAlert).hide();
+      $(window.failAlert).hide();
+    </script>
 
     <!-- Forms Scripts -->
-    <script src="../../js/forms/create-trainer-type.js"></script>
     <script src="../../js/forms/define-individual-trainer.js"></script>
-
-    <script src="../../js/utils/form-validation.js"></script>
 
   </body>
 </html>

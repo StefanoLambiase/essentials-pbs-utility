@@ -44,3 +44,9 @@ function disableDarkTheme() {
   DARK_STYLE_LINK.setAttribute("href", "");
   THEME_TOGGLER.innerHTML = "🌞 Light";
 }
+
+
+THEME_TOGGLER.addEventListener('click', function(e) {
+  e.preventDefault();
+  toggleTheme();
+});

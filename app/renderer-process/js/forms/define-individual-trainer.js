@@ -170,19 +170,41 @@ function sendIndividualTrainerForm(event) {
 
 	console.log('DEFINE INDIVIDUAL TRAINER: Trainer Submitted.')
 	console.table(individualTrainer);
-
 	
+  // Creates the object to send to the main process.
 	const formData = {
 		type: 'individual-trainer',
 		data: individualTrainer,
 	}
-
-	//window.bridgeToMain.send('individual-trainer-submission', individualTrainer);
-
+  // Sends the object using the bridge.
 	window.bridgeToMain.send('form-submission', formData);
 }
 
 
-// Adds the function to the individual trainer form submission.
-defineIndividualTrainerForm.addEventListener('submit', sendIndividualTrainerForm)
+// * Form Submission Listener
 
+// Adds the function as listener to the individual trainer form submission.
+defineIndividualTrainerForm.addEventListener(
+  'submit', // Event type
+  function (event) {
+    // Checks if the form field are valid.
+    if (!defineIndividualTrainerForm.checkValidity()) {
+      console.log('Form fields are not correct!')
+	  // If the form is not valid, avoid form submission.
+      event.preventDefault();
+      event.stopPropagation();
+	  // Alert the user
+	  $(window.successAlert).hide();
+      $(window.failAlert).show();
+    } else {
+      console.log('Form fields are correct!')
+      // If the form is valid, submits it.
+      sendIndividualTrainerForm(event);
+	  // Alert the user
+	  $(window.successAlert).show();
+      $(window.failAlert).hide();
+    }
+    defineIndividualTrainerForm.classList.add('was-validated');
+  },
+  false
+);

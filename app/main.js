@@ -102,7 +102,7 @@ const createTextWindow = (windowPath) => {
   window.loadFile(path.join(__dirname, windowPath));
 
   // Open the DevTools.
-  // window.webContents.openDevTools();
+  window.webContents.openDevTools();
 
   return window;
 };
