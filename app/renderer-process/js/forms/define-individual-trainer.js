@@ -190,19 +190,25 @@ defineIndividualTrainerForm.addEventListener(
     // Checks if the form field are valid.
     if (!defineIndividualTrainerForm.checkValidity()) {
       console.log('Form fields are not correct!')
-	  // If the form is not valid, avoid form submission.
+	    // If the form is not valid, avoid form submission.
       event.preventDefault();
       event.stopPropagation();
-	  // Alert the user
-	  $(window.successAlert).hide();
+	    // Alert the user
+	    $(window.successAlert).hide();
       $(window.failAlert).show();
+      setTimeout(function() {
+        $(window.failAlert).slideUp(3000);
+      }, 5000);
     } else {
       console.log('Form fields are correct!')
       // If the form is valid, submits it.
       sendIndividualTrainerForm(event);
-	  // Alert the user
-	  $(window.successAlert).show();
+	    // Alert the user
+	    $(window.successAlert).show();
       $(window.failAlert).hide();
+      setTimeout(function() {
+        $(window.successAlert).slideUp(3000);
+      }, 5000);
     }
     defineIndividualTrainerForm.classList.add('was-validated');
   },
