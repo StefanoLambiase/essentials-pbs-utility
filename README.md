@@ -27,6 +27,34 @@ OR
 
 - install it with a package manager, [Chocolatey](https://chocolatey.org/) for example (this is my case).
 
+### Install Node using a package manager
+
+#### Chocolatey on Windows
+
+[Chocolatey](https://chocolatey.org/) is a package manager for Windows.
+To install Chocolatey and Node, follow these steps:
+
+1. Start a Powershell as Admin (right click on the bottom-left corner on the screen;
+2. Run `Get-ExecutionPolicy`;
+3. If the output is 'Restricted', run `Set-ExecutionPolicy AllSigned`, else go to next step;
+4. Run `Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))`;
+5. Restart the powershell;
+6. Run `choco install -y --force nodejs`;
+7. Check node version using `node -v` and npm version using `npm -v`;
+8. Done! Now you are ready!
+
+#### Homebrew on Mac
+
+[Homebrew](https://brew.sh/index_it) is a package manager for Mac.
+To install Homebrew and Node, follow these steps:
+
+1. Paste `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"` into a macOS Terminal prompt to install Homebrew;
+2. Check the installation using the command `brew -v` (retry from the previous step if the command fails);
+3. Paste `brew install node` into a macOS Terminal prompt to install node using brew;
+4. Check node version using `node -v` and npm version using `npm -v`;
+5. Done! Now you are ready!
+
+
 ## Clone and build the project locally
 
 Follow these steps:
