@@ -6,6 +6,10 @@
 # Introduction
 This is a desktop app built to help Pokémon Essentials users in the creation of text for the PBS txt files. It is built with Electron, HTML, JavaScript, JQuery, and Bootstrap.
 
+## Authors
+
+* **Stefano Lambiase** - [StefanoLambiase](https://github.com/StefanoLambiase)
+
 # Technical informations
 
 In this section we introduce technical informations and installing guides!
