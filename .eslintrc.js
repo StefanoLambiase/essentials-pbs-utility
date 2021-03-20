@@ -11,7 +11,7 @@ module.exports = {
     'ecmaVersion': 12,
   },
   'ignorePatterns': [
-    '**/js/**/*.js',
+    '**/renderer-process/**',
   ],
   'rules': {
     'max-len': ['error', {'code': 120}],

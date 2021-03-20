@@ -8,11 +8,9 @@
 	<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https;">
 
 	<!-- Bootstrap CSS -->
-	<link href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<!-- 🚨 Notice this link. It's used to enable the dark mode -->
 	<link id="dark-theme-style" rel="stylesheet" />
-	<!-- Custom CSS -->
-	<link href="../../style/custom.css" rel="stylesheet">
 
 	<title>Essentials PBS Utility</title>
 </head>
@@ -36,15 +34,15 @@
 	</div>
 
 	<!-- Scripts -->
-	<script src="../../../../node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap and JQuery -->
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Custom Scripts -->
-	<script src="../../js/utils/globals.js"></script>   <!-- Globals Vars -->
-	<script src="../../js/utils/dark-mode.js"></script>
+    <script src="./core/utils/dark-mode.js"></script> <!-- Dark theme script -->
 
 	<!-- Specific Page Scripts -->
-	<script src="../../js/show-text/show-text.js"></script>
+	<script src="./show-text.js"></script>
 </body>
 
 </html>

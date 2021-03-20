@@ -1,0 +1,76 @@
+<form id="defineIndividualTrainer" class="needs-validation" novalidate>
+              
+  <!-- First line: ID, NAME, VERSION -->
+  <div class="mb-3 p-2 row row-cols-3 border rounded">
+    <div class="col mb-3">
+      <label for="individualTrainerId" class="form-label">Trainer Intenal Name *</label>
+      <input type="text" class="form-control" id="individualTrainerId" required>
+    </div>
+    <div class="col mb-3">
+      <label for="individualTrainerName" class="form-label">Trainer Name *</label>
+      <input type="text" class="form-control" id="individualTrainerName" required>
+    </div>
+    <div class="col mb-3">
+      <label for="individualTrainerVersionNumber" class="form-label">Version number</label>
+      <input type="number" class="form-control" id="individualTrainerVersionNumber">
+    </div>
+  </div>
+
+  <!-- Second line, ITEMS -->
+  <div class="mb-3 p-2 row border rounded">
+    <div class="row row-cols-2">
+      <div class="col mb-3">
+        <label for="individualTrainerItems" class="form-label">Items</label>
+      </div>
+
+      <div class="col mb-3 btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+        <button id="individualTrainerAddItem" type="button" class="btn btn-success">+</button>
+        <button id="individualTrainerRemoveItem" type="button" class="btn btn-danger">-</button>
+      </div>
+    </div>
+
+    <div class="row row-cols-4" id="individualTrainerItemsList">
+
+      <!-- Individual Item Inputs are inserted by JavaScript and JQuery -->
+    
+    </div>
+  </div>
+
+  <!-- Third line, LOSE_TEXT -->
+  <div class="mb-3 p-2 row border rounded">
+    <div class="col mb-3">
+      <label for="individualTrainerLoseText" class="form-label">Lose Text</label>
+      <input type="text" class="form-control" id="individualTrainerLoseText">
+    </div>
+  </div>
+
+  <!-- Fourth line, POKèMONS -->
+  <div class="mb-3 p-2 row border rounded">
+
+    <div class="row row-cols-2">
+      <div class="col mb-3">
+        <label for="individualTrainerPokemon" class="form-label">Pokémons *</label>
+      </div>
+
+      <div class="col mb-3 btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
+        <button id="individualTrainerAddPokemon" type="button" class="btn btn-success">+</button>
+        <button id="individualTrainerRemovePokemon" type="button" class="btn btn-danger">-</button>
+      </div>
+    </div>
+
+    <!-- Pokémons forms -->
+    <div class="col m-2 p-2" id="individualTrainerPokemonList">
+      <!-- Individual Pokémon Forms are inserted by JavaScript and JQuery -->
+    </div> <!-- Close Pokémons Form -->
+
+  </div> <!-- Close Fourth Line, POKéMONS-->
+
+  <!-- Form buttons -->
+  <div class="d-grid gap-2 col-6 mx-auto mb-3">
+    <button type="submit" class="btn btn-primary" id="defineIndividualTrainerButton">Submit</button>
+  </div>
+  <div class="d-grid gap-2 col-3 mx-auto">
+    <button type="reset" class="btn btn-warning" id="defineIndividualTrainerButton">Reset</button>
+  </div>
+
+</form>

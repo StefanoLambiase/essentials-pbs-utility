@@ -7,11 +7,9 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' https;">
 
     <!-- Bootstrap CSS -->
-    <link href="../../../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- 🚨 Notice this link. It's used to enable the dark mode -->
     <link id="dark-theme-style" rel="stylesheet" />
-    <!-- Custom CSS -->
-    <link href="../../style/custom.css" rel="stylesheet">
 
     <title>Essentials PBS Utility</title>
   </head>
@@ -37,7 +35,7 @@
         </div>
 
         <div class="col-4 mb-3">
-          <img src="../../assets/logo_senzaSfondo.png" class="img-fluid rounded float-end" alt="...">
+          <img src="./core/assets/logo_senzaSfondo.png" class="img-fluid rounded float-end" alt="...">
         </div>
       </div>
 
@@ -73,81 +71,6 @@
           <!-- !------------------------------------------------------------------------------------------------------------------------------------------- -->
           <!-- Define Individual Trainer form -->
           <div class="tab-pane fade show active" id="pills-individual-trainer" role="tabpanel" aria-labelledby="pills-individual-trainer-tab">
-            <form id="defineIndividualTrainer" class="needs-validation" novalidate>
-              
-              <!-- First line: ID, NAME, VERSION -->
-              <div class="mb-3 p-2 row row-cols-3 border rounded">
-                <div class="col mb-3">
-                  <label for="individualTrainerId" class="form-label">Trainer Intenal Name *</label>
-                  <input type="text" class="form-control" id="individualTrainerId" required>
-                </div>
-                <div class="col mb-3">
-                  <label for="individualTrainerName" class="form-label">Trainer Name *</label>
-                  <input type="text" class="form-control" id="individualTrainerName" required>
-                </div>
-                <div class="col mb-3">
-                  <label for="individualTrainerVersionNumber" class="form-label">Version number</label>
-                  <input type="number" class="form-control" id="individualTrainerVersionNumber">
-                </div>
-              </div>
-
-              <!-- Second line, ITEMS -->
-              <div class="mb-3 p-2 row border rounded">
-                <div class="row row-cols-2">
-                  <div class="col mb-3">
-                    <label for="individualTrainerItems" class="form-label">Items</label>
-                  </div>
-  
-                  <div class="col mb-3 btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                    <button id="individualTrainerAddItem" type="button" class="btn btn-success">+</button>
-                    <button id="individualTrainerRemoveItem" type="button" class="btn btn-danger">-</button>
-                  </div>
-                </div>
-
-                <div class="row row-cols-4" id="individualTrainerItemsList">
-
-                  <!-- Individual Item Inputs are inserted by JavaScript and JQuery -->
-                
-                </div>
-              </div>
-
-              <!-- Third line, LOSE_TEXT -->
-              <div class="mb-3 p-2 row border rounded">
-                <div class="col mb-3">
-                  <label for="individualTrainerLoseText" class="form-label">Lose Text</label>
-                  <input type="text" class="form-control" id="individualTrainerLoseText">
-                </div>
-              </div>
-
-              <!-- Fourth line, POKèMONS -->
-              <div class="mb-3 p-2 row border rounded">
-
-                <div class="row row-cols-2">
-                  <div class="col mb-3">
-                    <label for="individualTrainerPokemon" class="form-label">Pokémons *</label>
-                  </div>
-  
-                  <div class="col mb-3 btn-group btn-group-sm" role="group" aria-label="Basic mixed styles example">
-                    <button id="individualTrainerAddPokemon" type="button" class="btn btn-success">+</button>
-                    <button id="individualTrainerRemovePokemon" type="button" class="btn btn-danger">-</button>
-                  </div>
-                </div>
-
-                <!-- Pokémons forms -->
-                <div class="col m-2 p-2" id="individualTrainerPokemonList">
-                  <!-- Individual Pokémon Forms are inserted by JavaScript and JQuery -->
-                </div> <!-- Close Pokémons Form -->
-
-              </div> <!-- Close Fourth Line, POKéMONS-->
-
-              <!-- Form buttons -->
-              <div class="d-grid gap-2 col-6 mx-auto mb-3">
-                <button type="submit" class="btn btn-primary" id="defineIndividualTrainerButton">Submit</button>
-              </div>
-              <div class="d-grid gap-2 col-3 mx-auto">
-                <button type="reset" class="btn btn-warning" id="defineIndividualTrainerButton">Reset</button>
-              </div>
-            </form>
           </div>
           
           <!-- !------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -177,22 +100,23 @@
     <!-- Scripts -->
 
     <!-- Globals: IMPORTANT: it must be always the first script loaded -->
-    <script src="../../js/utils/globals.js"></script>
+    <script src="./core/utils/globals.js"></script>
 
     <!-- Bootstrap and JQuery -->
-    <script src="../../../../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Custom Scripts -->
-    <script src="../../js/utils/dark-mode.js"></script> <!-- Dark theme script -->
+    <script src="./core/utils/dark-mode.js"></script> <!-- Dark theme script -->
+
     <!-- Hides all the alerts -->
     <script>
       $(window.successAlert).hide();
       $(window.failAlert).hide();
     </script>
 
-    <!-- Forms Scripts -->
-    <script src="../../js/forms/define-individual-trainer.js"></script>
+    <!-- Forms main Scripts -->
+    <script src="./features/define-individual-trainer/js/define-individual-trainer.js"></script>
 
   </body>
 </html>
