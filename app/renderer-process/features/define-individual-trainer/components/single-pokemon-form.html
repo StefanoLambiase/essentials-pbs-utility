@@ -10,141 +10,169 @@
 
 <!-- Pokémon First line, NAME, LEVEL, GENDER, NICKNAME -->
 <div class="col mb-3">
-	<label for="individualTrainerPokemonInternalName" class="form-label">Pokémon Internal Name</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonInternalName" required>
+  <label for="individualTrainerPokemonInternalName" class="form-label">Pokémon Internal Name</label>
+  <input type="text" class="form-control" id="individualTrainerPokemonInternalName" required>
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonLevel" class="form-label">Pokémon Level</label>
-	<input type="number" class="form-control" id="individualTrainerPokemonLevel" required min="1" max="100">
+  <label for="individualTrainerPokemonLevel" class="form-label">Pokémon Level</label>
+  <input type="number" class="form-control" id="individualTrainerPokemonLevel" required min="1" max="100">
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonGender" class="form-label">Gender</label>
-	<select id="individualTrainerPokemonGender" class="form-select" required>
-		<option selected value="male">male</option>
-		<option value="female">female</option>
-	</select>
+  <label for="individualTrainerPokemonGender" class="form-label">Gender</label>
+  <select id="individualTrainerPokemonGender" class="form-select" required>
+    <option selected value="male">male</option>
+    <option value="female">female</option>
+  </select>
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonNickname" class="form-label">Nickname</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonNickname">
+  <label for="individualTrainerPokemonNickname" class="form-label">Nickname</label>
+  <input type="text" class="form-control" id="individualTrainerPokemonNickname">
 </div>
 
 <!-- Pokémon Second line, MOVES -->
 <div class="col mb-3">
-	<label for="individualTrainerPokemonMoves1" class="form-label">Move #1</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonMoves1">
+  <label for="individualTrainerPokemonMoves1" class="form-label">Move #1</label>
+  <input type="text" class="form-control" id="individualTrainerPokemonMoves1">
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonMoves2" class="form-label">Move #2</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonMoves2">
+  <label for="individualTrainerPokemonMoves2" class="form-label">Move #2</label>
+  <input type="text" class="form-control" id="individualTrainerPokemonMoves2">
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonMoves3" class="form-label">Move #3</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonMoves3">
+  <label for="individualTrainerPokemonMoves3" class="form-label">Move #3</label>
+  <input type="text" class="form-control" id="individualTrainerPokemonMoves3">
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonMoves4" class="form-label">Move #4</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonMoves4">
+  <label for="individualTrainerPokemonMoves4" class="form-label">Move #4</label>
+  <input type="text" class="form-control" id="individualTrainerPokemonMoves4">
 </div>
 
 <!-- Pokémon Third line, ABILITY, NATURE, ITEM, FORM -->
 <div class="col mb-3">
-	<label for="individualTrainerPokemonAbility" class="form-label">Ability (0 to 5)</label>
-	<input type="number" class="form-control" id="individualTrainerPokemonAbility">
+  <label for="individualTrainerPokemonAbility" class="form-label">Ability (0 to 5)</label>
+  <input type="number" class="form-control" id="individualTrainerPokemonAbility">
+</div>
+
+<div class="col mb-3">
+  <label for="individualTrainerPokemonNature" class="form-label">Nature</label>
+  <select class="form-select" id="individualTrainerPokemonNature">
+    <option value="HARDY" selected>HARDY</option>
+    <option value="LONELY">LONELY (+Atk -Def)</option>
+    <option value="BRAVE">BRAVE (+Atk -Speed)</option>
+    <option value="ADAMANT">ADAMANT (+Atk -SpAtk)</option>
+    <option value="NAUGHTY">NAUGHTY (+Atk -Def)</option>
+    <option value="BOLD">BOLD (+Def -Atk)</option>
+    <option value="DOCILE">DOCILE</option>
+    <option value="RELAXED">RELAXED (+Def -Speed)</option>
+    <option value="IMPISH">IMPISH (+Def -SpAtk)</option>
+    <option value="LAX">LAX (+Def -SpDef)</option>
+    <option value="TIMID">TIMID (+Speed -Atk)</option>
+    <option value="HASTY">HASTY (+Speed -Def)</option>
+    <option value="SERIOUS">SERIOUS</option>
+    <option value="JOLLY">JOLLY (+Speed -SpAtk)</option>
+    <option value="NAIVE">NAIVE (+Speed -SpDef)</option>
+    <option value="MODEST">MODEST (+SpAtk -Atk)</option>
+    <option value="MILD">MILD (+SpAtk -Def)</option>
+    <option value="QUIET">QUIET (+SpAtk -Speed)</option>
+    <option value="BASHFUL">BASHFUL</option>
+    <option value="RASH">RASH (+SpAtk -SpDef)</option>
+    <option value="CALM">CALM (+SpDef -Atk)</option>
+    <option value="GENTLE">GENTLE (+SpDef -atk)</option>
+    <option value="SASSY">SASSY (+SpDef -Speed)</option>
+    <option value="CAREFUL">CAREFUL (+SpDef -SpAtk)</option>
+    <option value="QUIRKY">QUIRKY</option>
+  </select>
+</div>
+
+<div class="col mb-3">
+  <label for="individualTrainerPokemonItem" class="form-label">Item</label>
+  <input type="text" class="form-control" id="individualTrainerPokemonItem">
 </div>
 <div class="col mb-3">
-	<label for="individualTrainerPokemonNature" class="form-label">Nature</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonNature">
+  <label for="individualTrainerPokemonForm" class="form-label">Pokémon Form (0 to ...)</label>
+  <input type="number" class="form-control" id="individualTrainerPokemonForm">
 </div>
-<div class="col mb-3">
-	<label for="individualTrainerPokemonItem" class="form-label">Item</label>
-	<input type="text" class="form-control" id="individualTrainerPokemonItem">
-</div>
-<div class="col mb-3">
-	<label for="individualTrainerPokemonForm" class="form-label">Pokémon Form (0 to ...)</label>
-	<input type="number" class="form-control" id="individualTrainerPokemonForm">
-</div>
-  
+
 <!-- Pokémon Fourth line, IVs, EVs -->
 <!-- IVs -->
 <div class="col-3 mb-3" id="individualTrainerPokemonIVs">
-	<label class="form-label">IVs (0 to 31)</label>
-	<div class="input-group mb-3">
-		<span class="input-group-text">HP</span>
-		<input type="number" class="form-control" id="iv1" max="31">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Attack</span>
-		<input type="number" class="form-control" id="iv2" max="31">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Defense</span>
-		<input type="number" class="form-control" id="iv3" max="31">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Speed</span>
-		<input type="number" class="form-control" id="iv4" max="31">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Special Atk</span>
-		<input type="number" class="form-control" id="iv5" max="31">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Special Def</span>
-		<input type="number" class="form-control" id="iv6" max="31">
-	</div>
+  <label class="form-label">IVs (0 to 31)</label>
+  <div class="input-group mb-3">
+    <span class="input-group-text">HP</span>
+    <input type="number" class="form-control" id="iv1" max="31">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Attack</span>
+    <input type="number" class="form-control" id="iv2" max="31">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Defense</span>
+    <input type="number" class="form-control" id="iv3" max="31">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Speed</span>
+    <input type="number" class="form-control" id="iv4" max="31">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Special Atk</span>
+    <input type="number" class="form-control" id="iv5" max="31">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Special Def</span>
+    <input type="number" class="form-control" id="iv6" max="31">
+  </div>
 </div>
 <!-- EVs -->
 <div class="col-3 mb-3" id="individualTrainerPokemonEVs">
-	<label class="form-label">EVs (0 to 252)</label>
-	<div class="input-group mb-3">
-		<span class="input-group-text">HP</span>
-		<input type="number" class="form-control" id="ev1" max="252">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Attack</span>
-		<input type="number" class="form-control" id="ev2" max="252">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Defense</span>
-		<input type="number" class="form-control" id="ev3" max="252">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Speed</span>
-		<input type="number" class="form-control" id="ev4" max="252">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Special Atk</span>
-		<input type="number" class="form-control" id="ev5" max="252">
-	</div>
-	<div class="input-group mb-3">
-		<span class="input-group-text">Special Def</span>
-		<input type="number" class="form-control" id="ev6" max="252">
-	</div>
+  <label class="form-label">EVs (0 to 252)</label>
+  <div class="input-group mb-3">
+    <span class="input-group-text">HP</span>
+    <input type="number" class="form-control" id="ev1" max="252">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Attack</span>
+    <input type="number" class="form-control" id="ev2" max="252">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Defense</span>
+    <input type="number" class="form-control" id="ev3" max="252">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Speed</span>
+    <input type="number" class="form-control" id="ev4" max="252">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Special Atk</span>
+    <input type="number" class="form-control" id="ev5" max="252">
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">Special Def</span>
+    <input type="number" class="form-control" id="ev6" max="252">
+  </div>
 </div>
 
 <!-- Pokémon Fifth line, SHINY, HAPPINESS, BALL, SHADOW -->
 <div class="col-sm-6">
-	<div class="row">
-		<label for="individualTrainerPokemonShiny" class="form-label">Shiny</label>
-		<select id="individualTrainerPokemonShiny" class="form-select">
-			<option value="yes">Yes</option>
-			<option selected value="no">No</option>
-		</select>
-	</div>
-	<div class="row">
-		<label for="individualTrainerPokemonHappiness" class="form-label">Happiness (0 to 255)</label>
-		<input type="number" class="form-control" id="individualTrainerPokemonHappiness" max="255">
-	</div>
-	<div class="row">
-		<label for="individualTrainerPokemonBall" class="form-label">Ball</label>
-		<input type="number" value="0" class="form-control" id="individualTrainerPokemonBall">
-	</div>
-	<div class="row">
-		<label for="individualTrainerPokemonShadow" class="form-label">Shadow</label>
-		<select id="individualTrainerPokemonShadow" class="form-select">
-			<option value="yes">Yes</option>
-			<option selected value="no">No</option>
-		</select>
-	</div>
+  <div class="row">
+    <label for="individualTrainerPokemonShiny" class="form-label">Shiny</label>
+    <select id="individualTrainerPokemonShiny" class="form-select">
+      <option value="yes">Yes</option>
+      <option selected value="no">No</option>
+    </select>
+  </div>
+  <div class="row">
+    <label for="individualTrainerPokemonHappiness" class="form-label">Happiness (0 to 255)</label>
+    <input type="number" class="form-control" id="individualTrainerPokemonHappiness" max="255">
+  </div>
+  <div class="row">
+    <label for="individualTrainerPokemonBall" class="form-label">Ball</label>
+    <input type="number" value="0" class="form-control" id="individualTrainerPokemonBall">
+  </div>
+  <div class="row">
+    <label for="individualTrainerPokemonShadow" class="form-label">Shadow</label>
+    <select id="individualTrainerPokemonShadow" class="form-select">
+      <option value="yes">Yes</option>
+      <option selected value="no">No</option>
+    </select>
+  </div>
 </div>

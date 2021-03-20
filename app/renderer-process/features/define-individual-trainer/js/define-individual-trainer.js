@@ -177,7 +177,7 @@ function initFormSubmission() {
         gender: attributesSelects.namedItem('individualTrainerPokemonGender').value,
         form: attributesInputs.namedItem('individualTrainerPokemonForm').value,
         shiny: attributesSelects.namedItem('individualTrainerPokemonShiny').value,
-        nature: attributesInputs.namedItem('individualTrainerPokemonNature').value,
+        nature: attributesSelects.namedItem('individualTrainerPokemonNature').value,
         iv: attributesInputs.namedItem('iv1').value + ',' +
           attributesInputs.namedItem('iv2').value + ',' +
           attributesInputs.namedItem('iv3').value + ',' +
