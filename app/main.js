@@ -9,7 +9,8 @@ const path = require('path');
 require('./main-process/utils/main-globals');
 
 // Main Process scripts.
-const individualTrainerController = require('./main-process/domain/individual-trainer/individual-trainer-controller');
+const individualTrainerControllerPath = path.join(__dirname, defineIndividualTrainerController);
+const individualTrainerController = require(individualTrainerControllerPath);
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
