@@ -24,7 +24,7 @@ function generateIndividualTrainerString(individualTrainer) {
     let pRowList = [];
 
     pRowList[0] = `Pokemon = ${pokemon.internalName},${pokemon.level}`; // Name & Level
-    pRowList[1] = (pokemon.item !== '') ? `   Item = ${pokemon.item}` : null; // Item
+    pRowList[1] = (pokemon.item !== '') ? `    Item = ${pokemon.item}` : null; // Item
     pRowList[2] = (pokemon.moves !== ',,,') ? `    Moves = ${pokemon.moves}` : null; // Moves
     pRowList[3] = (pokemon.ability !== '') ? `    Ability = ${pokemon.ability}` : null; // Ability
     pRowList[4] = `    Gender = ${pokemon.gender}`; // Gender
