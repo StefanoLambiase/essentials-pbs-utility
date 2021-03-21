@@ -108,13 +108,14 @@ const createTextWindow = (windowPath) => {
   return window;
 };
 
+
 /**
  * Is called when a renderer process submits a form. It uses the 'type' in the 'formData' to
  * know wich text needs to be generated and sends it to a new window.
  * @param {*} event - Contains information about the renderer process that calls the main process.
  * @param {*} formData - The data inserted by the user in the form.
  */
-const onFormSubmission = (event, formData) => {
+const generatePBSText = (event, formData) => {
   console.log(`MAIN PROCESS: received a request from ${event.senderFrame.url}`);
 
   let stringToSend = '';
@@ -146,4 +147,4 @@ const onFormSubmission = (event, formData) => {
 // * ############### Main process Callbacks #################
 // * ########################################################
 
-ipcMain.on('form-submission', onFormSubmission);
+ipcMain.on('form-submission', generatePBSText);
