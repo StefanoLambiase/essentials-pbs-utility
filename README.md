@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/StefanoLambiase/essentials-pbs-utility/main/.github/workflows/logo.png?token=AH2LWL6LRUAAPB5NTRHT5MTALMYK2" />
+  <img src="https://github.com/StefanoLambiase/essentials-pbs-utility/blob/main/.github/workflows/logo.png?raw=true" />
 </p>
 
 
